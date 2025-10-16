@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Auto-install script for Vagrant, libvirt, and QEMU on Ubuntu/Debian-based systems
+# Auto-install script for Vagrant and VirtualBox on Ubuntu/Debian-based systems
 # Run with: ./install.sh
 
 set -e
@@ -20,21 +20,8 @@ sudo apt update
 echo "Installing Vagrant..."
 sudo apt install -y vagrant
 
-echo "Installing libvirt development files..."
-sudo apt install -y libvirt-dev
-
-echo "Installing build dependencies for vagrant plugins..."
-sudo apt install -y ruby-dev build-essential
-
-echo "Installing vagrant-libvirt plugin..."
-vagrant plugin install vagrant-libvirt
-
-echo "Installing libvirt and QEMU..."
-sudo apt install -y libvirt-daemon-system libvirt-clients qemu-kvm
-
-echo "Adding current user to libvirt group..."
-sudo usermod -a -G libvirt $(whoami)
+echo "Installing VirtualBox..."
+sudo apt install -y virtualbox
 
 echo "Installation complete!"
-echo "Note: You may need to restart your session or run 'newgrp libvirt' for group changes to take effect."
-echo "After that, proceed with cloning the repo and running 'vagrant up'."
+echo "Proceed with cloning the repo and running 'vagrant up'."
