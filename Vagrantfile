@@ -1,9 +1,9 @@
 Vagrant.configure("2") do |config|
   config.vm.box = "gusztavvargadr/windows-10"
   config.vm.network "forwarded_port", guest: 3389, host: 3389
-  config.vm.provider "libvirt" do |libvirt|
-    libvirt.memory = 14336
-    libvirt.cpus = 7
+  config.vm.provider "virtualbox" do |vb|
+    vb.memory = 14336
+    vb.cpus = 7
   end
   config.vm.provision "shell", inline: <<-SHELL
     powershell -ExecutionPolicy Bypass -Command "
