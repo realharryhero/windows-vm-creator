@@ -1,5 +1,5 @@
 Vagrant.configure("2") do |config|
-  config.vm.box = "gusztavvargadr/windows-10"
+  config.vm.box = "StefanScherer/windows_10"
   config.vm.network "forwarded_port", guest: 3389, host: 3389
   config.vm.provider "virtualbox" do |vb|
     vb.memory = 14336
