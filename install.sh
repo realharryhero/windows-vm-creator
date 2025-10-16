@@ -20,6 +20,12 @@ sudo apt update
 echo "Installing Vagrant..."
 sudo apt install -y vagrant
 
+echo "Installing build dependencies for vagrant plugins..."
+sudo apt install -y ruby-dev build-essential
+
+echo "Installing vagrant-libvirt plugin..."
+vagrant plugin install vagrant-libvirt
+
 echo "Installing libvirt and QEMU..."
 sudo apt install -y libvirt-daemon-system libvirt-clients qemu-kvm
 
@@ -28,4 +34,4 @@ sudo usermod -a -G libvirt $(whoami)
 
 echo "Installation complete!"
 echo "Note: You may need to restart your session or run 'newgrp libvirt' for group changes to take effect."
-echo "After that, proceed with cloning the repo and running 'vagrant up'.",
+echo "After that, proceed with cloning the repo and running 'vagrant up'."
