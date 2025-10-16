@@ -1,0 +1,15 @@
+Vagrant.configure("2") do |config|
+  config.vm.box = "gusztavvargadr/windows-10"
+  config.vm.network "forwarded_port", guest: 3389, host: 3389
+  config.vm.provider "libvirt" do |libvirt|
+    libvirt.memory = 14336
+    libvirt.cpus = 7
+  end
+  config.vm.provision "shell", inline: <<-SHELL
+    powershell -ExecutionPolicy Bypass -Command "
+      # Ensure RDP is enabled
+      Set-ItemProperty -Path 'HKLM:\\System\\CurrentControlSet\\Control\\Terminal Server' -Name 'fDenyTSConnections' -Value 0
+      Enable-NetFirewallRule -DisplayGroup 'Remote Desktop'
+    "
+  SHELL
+end
