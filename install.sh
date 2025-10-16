@@ -20,6 +20,9 @@ sudo apt update
 echo "Installing Vagrant..."
 sudo apt install -y vagrant
 
+echo "Installing libvirt development files..."
+sudo apt install -y libvirt-dev
+
 echo "Installing build dependencies for vagrant plugins..."
 sudo apt install -y ruby-dev build-essential
 
