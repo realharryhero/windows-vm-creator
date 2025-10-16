@@ -1,6 +1,5 @@
 Vagrant.configure("2") do |config|
   config.vm.box = "StefanScherer/windows_10"
-  config.vm.network "forwarded_port", guest: 3389, host: 3389
   config.vm.provider "virtualbox" do |vb|
     vb.memory = 14336
     vb.cpus = 7
@@ -8,7 +7,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: <<-SHELL
     powershell -ExecutionPolicy Bypass -Command "
       # Ensure RDP is enabled
-      Set-ItemProperty -Path 'HKLM:\\System\\CurrentControlSet\\Control\\Terminal Server' -Name 'fDenyTSConnections' -Value 0
+      Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' -Name 'fDenyTSConnections' -Value 0
       Enable-NetFirewallRule -DisplayGroup 'Remote Desktop'
     "
   SHELL
