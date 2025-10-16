@@ -8,9 +8,20 @@ This repository provides a simple setup to create a virtualized Windows 10 machi
 - Remote access via RDP (Remote Desktop Protocol)
 - Single command setup and launch
 
+## Auto-Install Prerequisites
+
+To automatically install Vagrant, libvirt, and QEMU on Ubuntu/Debian-based Linux systems, run the included script:
+
+```
+chmod +x install.sh
+./install.sh
+```
+
+This will update your package list, install the required tools, and add your user to the libvirt group. You may need to restart your session or run `newgrp libvirt` for the group changes to take effect.
+
 ## Prerequisites
-- [libvirt](https://libvirt.org/) and [QEMU](https://www.qemu.org/) installed (on Linux)
-- [Vagrant](https://www.vagrantup.com/) installed (version 2.2+ recommended)
+- [libvirt](https://libvirt.org/) and [QEMU](https://www.qemu.org/) installed (on Linux) - see Auto-Install above
+- [Vagrant](https://www.vagrantup.com/) installed (version 2.2+ recommended) - see Auto-Install above
 - At least 16GB RAM and 8 CPUs on host machine (VM allocates 14GB RAM and 7 CPUs)
 - RDP client (built-in on Windows/macOS, or [Remmina](https://remmina.org/) on Linux)
 
